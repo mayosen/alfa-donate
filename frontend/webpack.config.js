@@ -3,6 +3,7 @@ import path from 'path';
 import { dirname } from 'path';
 import {fileURLToPath} from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,14 +24,20 @@ const config =  {
           exclude: /node_modules/,
         },
         {
-          test: /\.(css|scss)?$/,
-          use: ["style-loader", "css-loader"],
+          test: /\.(css|scss)$/,
+          use: [ "style-loader", "css-loader", "resolve-url-loader", {loader: "sass-loader", options: {
+            sourceMap: true,
+          }}],
           exclude: /node_modules/,
         },
         {
-          test: /\.(jpg|jpeg|png|gif|mp3)$/,
+          test: /\.(png|jpg|jpeg|gif|mp3)$/,
           use: [ {
-            loader: "file-loader"
+            loader: "url-loader",
+            options: {
+              name: '[hash]-[name].[ext]',
+              esModule: false,
+            },
           }],
         },
         {
@@ -44,6 +51,9 @@ const config =  {
       ],
     },
     resolve: {
+      alias: {
+        'images': path.resolve(__dirname, '/src/images/')
+      },
       extensions: ['.tsx', '.ts', '.js', '.css', '.scss'],
     },
     output: {
@@ -53,6 +63,9 @@ const config =  {
         new HtmlWebpackPlugin({
         template: 'public/index.html',
       }),
+      new CopyPlugin({patterns: [
+        { from: 'src/images', to: 'images' }
+      ]})
     ],
     devServer: {
       historyApiFallback: true,
