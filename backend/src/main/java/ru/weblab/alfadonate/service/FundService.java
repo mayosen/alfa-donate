@@ -8,14 +8,21 @@ import ru.weblab.alfadonate.repository.FundRepo;
 import ru.weblab.alfadonate.requestDto.FundCreateRequest;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Service
 public class FundService {
     private final FundRepo fundRepo;
+    private final StreamerService streamerService;
 
     @Autowired
-    public FundService(FundRepo fundRepo) {
+    public FundService(FundRepo fundRepo, StreamerService streamerService) {
         this.fundRepo = fundRepo;
+        this.streamerService = streamerService;
+    }
+
+    public Mono<Fund> findByStreamerId(long streamerId) {
+        return fundRepo.findByStreamerId(streamerId);
     }
 
     public void create(FundCreateRequest request) {
@@ -34,11 +41,13 @@ public class FundService {
         });
     }
 
-    public Mono<Fund> create(Fund fund) {
+    public Mono<Fund> update(Fund fund) {
         return fundRepo.save(fund);
     }
 
-    public Mono<Fund> findByStreamerId(long streamerId) {
-        return fundRepo.findByStreamerId(streamerId);
+    public void drop(UUID token) {
+        streamerService.findByToken(token).subscribe(s -> {
+            fundRepo.deleteByStreamerId(s.getId());
+        });
     }
 }

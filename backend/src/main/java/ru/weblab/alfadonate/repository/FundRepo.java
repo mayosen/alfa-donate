@@ -8,4 +8,6 @@ import ru.weblab.alfadonate.domain.Fund;
 @Repository
 public interface FundRepo extends ReactiveCrudRepository<Fund, Long> {
     Mono<Fund> findByStreamerId(long streamerId);
+
+    Mono<Fund> deleteByStreamerId(long streamerId);
 }

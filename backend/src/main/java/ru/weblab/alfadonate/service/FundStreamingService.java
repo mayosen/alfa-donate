@@ -10,12 +10,10 @@ import java.util.*;
 @Service
 public class FundStreamingService {
     private final Map<UUID, Queue<FundResponse>> streamers;
-    private final StreamerService streamerService;
     private final FundService fundService;
 
-    public FundStreamingService(StreamerService userService, FundService fundService) {
+    public FundStreamingService(FundService fundService) {
         this.fundService = fundService;
-        this.streamerService = userService;
         this.streamers = new HashMap<>();
     }
 
@@ -42,7 +40,7 @@ public class FundStreamingService {
                 return;
             }
             fund.setCollected(fund.getCollected() + amount);
-            fundService.create(fund).subscribe(f -> {
+            fundService.update(fund).subscribe(f -> {
                 Queue<FundResponse> queue = streamers.get(token);
                 if (queue != null) {
                     queue.add(FundMapper.fromFundToResponse(f));

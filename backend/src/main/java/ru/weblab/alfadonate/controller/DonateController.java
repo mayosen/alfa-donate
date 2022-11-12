@@ -45,19 +45,20 @@ public class DonateController {
         donateStreamingService.pushDonate(request);
     }
 
-    @GetMapping("/fund/{token}")
-    public Flux<ServerSentEvent<FundResponse>> listenForFund(@PathVariable UUID token) {
-        fundStreamingService.addStreamer(token);
-        return Flux.interval(Duration.ofSeconds(1))
-                .mapNotNull(s -> fundStreamingService.pollFundUpdate(token));
-    }
-
     @PostMapping("/fund")
     public void startFund(@Valid @RequestBody FundCreateRequest request) {
         fundService.create(request);
     }
 
-    @DeleteMapping("/fund")
-    public void stopFund() {
+    @DeleteMapping("/fund/{token}")
+    public void dropFund(@PathVariable UUID token) {
+        fundService.drop(token);
+    }
+
+    @GetMapping("/fund/{token}")
+    public Flux<ServerSentEvent<FundResponse>> listenForFund(@PathVariable UUID token) {
+        fundStreamingService.addStreamer(token);
+        return Flux.interval(Duration.ofSeconds(1))
+                .mapNotNull(s -> fundStreamingService.pollFundUpdate(token));
     }
 }
