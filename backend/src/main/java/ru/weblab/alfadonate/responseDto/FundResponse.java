@@ -1,21 +1,17 @@
-package ru.weblab.alfadonate.domain;
+package ru.weblab.alfadonate.responseDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "fund")
-public class Fund {
-    @Id
+@NoArgsConstructor
+public class FundResponse {
     private Long id;
     private String name;
     private Integer aim;

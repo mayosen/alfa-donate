@@ -1,3 +1,4 @@
+
 package ru.weblab.alfadonate.config;
 
 import org.springframework.context.annotation.Bean;
@@ -19,9 +20,9 @@ public class WebConfig implements WebFluxConfigurer {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http
                 .authorizeExchange()
-                .pathMatchers("/login", "/register").permitAll()
-                .anyExchange().authenticated()
-                .and().httpBasic()
+                .pathMatchers("/login", "/register", "/**").permitAll()
+                //.anyExchange().authenticated()
+               // .and().httpBasic()
                 .and().build();
     }
 
@@ -31,3 +32,4 @@ public class WebConfig implements WebFluxConfigurer {
     }
 
 }
+
