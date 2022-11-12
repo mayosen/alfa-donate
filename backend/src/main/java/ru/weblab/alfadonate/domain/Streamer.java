@@ -13,4 +13,9 @@ import org.springframework.data.relational.core.mapping.Table;
 public class Streamer {
     @Id
     private Long id;
+    private String email;
+    private String password;
+    private String nickname;
+    private String description;
+    private String iconUrl;
 }
