@@ -27,7 +27,7 @@ public class DonateController {
     public Flux<ServerSentEvent<DonateResponse>> listenForDonates(@PathVariable UUID token) {
         eventService.addStreamer(token);
         return Flux.interval(Duration.ofSeconds(1))
-                .map(s -> eventService.pollDonate(token));
+                .mapNotNull(s -> eventService.pollDonate(token));
     }
 
     @PostMapping("/donate")

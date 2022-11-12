@@ -36,7 +36,7 @@ public class EventService {
     public ServerSentEvent<DonateResponse> pollDonate(UUID token) {
         DonateResponse donate = streamers.get(token).poll();
         return donate == null
-            ? EMPTY_DONATE
+            ? null//EMPTY_DONATE
             : ServerSentEvent.<DonateResponse> builder()
                 .id(String.valueOf(donate.getId()))
                 .event("donate")
