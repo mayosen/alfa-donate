@@ -4,7 +4,7 @@ CREATE TABLE streamer (
     password VARCHAR(255),
     nickname VARCHAR(255),
     description VARCHAR(255),
-    iconUrl VARCHAR(255),
+    icon_url VARCHAR(255),
     token UUID
 );
 
@@ -14,7 +14,7 @@ CREATE TABLE donate (
     nickname VARCHAR(255),
     message VARCHAR(255),
     amount INTEGER,
-    region VARCHAR(255),
+    tag VARCHAR(255),
     date TIMESTAMP
 );
 

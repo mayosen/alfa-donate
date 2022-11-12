@@ -1,26 +1,38 @@
 package ru.weblab.alfadonate.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.codec.ServerSentEvent;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import ru.weblab.alfadonate.mapper.DonateMapper;
+import ru.weblab.alfadonate.requestDto.DonateCreateRequest;
+import ru.weblab.alfadonate.responseDto.DonateResponse;
+import ru.weblab.alfadonate.service.EventService;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.UUID;
 
 @RestController
 public class DonateController {
-    @GetMapping("/donate/{uuid}")
-    public Flux<String> listenForDonates(@PathVariable String uuid) {
-        return null;
+    private final EventService eventService;
+
+    @Autowired
+    public DonateController(EventService eventService) {
+        this.eventService = eventService;
+    }
+
+    @GetMapping("/donate/{token}")
+    public Flux<ServerSentEvent<DonateResponse>> listenForDonates(@PathVariable UUID token) {
+        eventService.addStreamer(token);
+        return Flux.interval(Duration.ofSeconds(1))
+                .map(s -> eventService.pollDonate(token));
     }
 
     @PostMapping("/donate")
-    public Mono<?> makeDonate() {
-        return null;
+    public void makeDonate(@RequestBody DonateCreateRequest request) {
+        eventService.pushDonate(request);
     }
 
     @GetMapping("/stream-sse/{id}")

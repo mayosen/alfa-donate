@@ -23,7 +23,9 @@ public class WebConfig implements WebFluxConfigurer {
                 .pathMatchers("/login", "/register", "/**").permitAll()
                 //.anyExchange().authenticated()
                // .and().httpBasic()
-                .and().build();
+                .and()
+                .csrf().disable()
+                .build();
     }
 
     @Bean

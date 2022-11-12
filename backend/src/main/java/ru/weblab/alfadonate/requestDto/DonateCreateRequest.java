@@ -5,16 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class DonateCreateRequest {
-    private String nickName;
+    private Long streamerId;
+    private String nickname;
     private String message;
-    private String region;
-    private LocalDateTime date;
+    private String tag;
     private Integer amount;
 }

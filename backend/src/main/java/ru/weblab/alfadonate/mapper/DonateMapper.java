@@ -10,9 +10,9 @@ public class DonateMapper {
     public static DonateResponse fromDonateToResponse(Donate donate) {
         return new DonateResponse(
                 donate.getId(),
-                donate.getNickName(),
+                donate.getNickname(),
                 donate.getMessage(),
-                donate.getRegion(),
+                donate.getTag(),
                 donate.getDate(),
                 donate.getAmount()
         );

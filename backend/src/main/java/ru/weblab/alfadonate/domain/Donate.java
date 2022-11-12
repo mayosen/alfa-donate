@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -17,10 +17,24 @@ import java.time.LocalDateTime;
 @Table(name = "donate")
 public class Donate {
     @Id
+    @Column("donate_id")
     private Long id;
-    private String nickName;
+
+    @Column("streamer_id")
+    private Long streamerId;
+
+    @Column("nickname")
+    private String nickname;
+
+    @Column("message")
     private String message;
-    private String region;
-    private LocalDateTime date;
+
+    @Column("tag")
+    private String tag;
+
+    @Column("date")
+    private Instant date;
+
+    @Column("amount")
     private Integer amount;
 }
