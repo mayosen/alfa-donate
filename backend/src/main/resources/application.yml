@@ -1,1 +1,29 @@
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        data:
+          r2dbc: DEBUG
+    web: DEBUG
+    ru:
+      weblab:
+        alfadonate: DEBUG
 
+spring:
+  codec:
+    log-request-details: true
+
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/alfa-donate
+    username: postgres
+    password: postgres
+
+  flyway:
+    url: jdbc:postgresql://localhost:5432/alfa-donate
+    user: postgres
+    password: postgres
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+    schemas: public
+    enabled: true
