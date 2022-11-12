@@ -13,15 +13,6 @@ public class EventService {
     private final Map<UUID, Queue<DonateResponse>> streamers;
     private final DonateService donateService;
     private final StreamerService streamerService;
-    private static final ServerSentEvent<DonateResponse> EMPTY_DONATE;
-
-    static {
-        EMPTY_DONATE = ServerSentEvent.<DonateResponse> builder()
-                .id("")
-                .event("no-message")
-                .data(null)
-                .build();
-    }
 
     public EventService(DonateService donateService, StreamerService userService) {
         this.streamers = new HashMap<>();
@@ -36,8 +27,8 @@ public class EventService {
     public ServerSentEvent<DonateResponse> pollDonate(UUID token) {
         DonateResponse donate = streamers.get(token).poll();
         return donate == null
-            ? null//EMPTY_DONATE
-            : ServerSentEvent.<DonateResponse> builder()
+                ? null
+                : ServerSentEvent.<DonateResponse>builder()
                 .id(String.valueOf(donate.getId()))
                 .event("donate")
                 .data(donate)
@@ -48,7 +39,10 @@ public class EventService {
         donateService.save(request).subscribe(donate -> {
 
             streamerService.findById(request.getStreamerId()).subscribe(streamer -> {
-                streamers.get(streamer.getToken()).add(DonateMapper.fromDonateToResponse(donate));
+                Queue<DonateResponse> queue = streamers.get(streamer.getToken());
+                if (queue != null) {
+                    queue.add(DonateMapper.fromDonateToResponse(donate));
+                }
             });
 
         });
