@@ -16,6 +16,9 @@ const Analytics = (): JSX.Element => {
 
     const [donaters, setDonaters] = useState<IDonater[]>();
     const [timestat, setTimeStat] = useState<ITimeDonate[]>();
+    const [byweek, setByWeek] = useState(false);
+    const [byday, setByDay] = useState(false);
+    const [bymonth, setByMonth] = useState(true);
 
     useEffect(() => {
         const request = async () => {
@@ -29,6 +32,16 @@ const Analytics = (): JSX.Element => {
     }, []);
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        if (event.target.value === "week") {
+            setByWeek(true);
+            setByWeek(false);
+        }
+        if (event.target.value === "day") {
+            setByDay(true);
+        }
+        if (event.target.value === "month") {
+            setByMonth(true);
+        }
         console.log(event.target.value);
     };
 
