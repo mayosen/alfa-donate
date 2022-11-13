@@ -15,9 +15,13 @@ const BlankFund = (): JSX.Element => {
 
     const [popUps, show] = useState<IFund[]>([]);
     const [sum, setSum] = useState(0);
+    const [aim, setAim] = useState(0);
+    const [name, setName] = useState('');
     fundSource.addEventListener('fundUpdate', event => {
         let fund = JSON.parse(event.data)
         setSum(fund.collected)
+        setAim(fund.aim);
+        setName(fund.name);
         fundQueue.push(fund)
     });
 
@@ -47,8 +51,8 @@ const BlankFund = (): JSX.Element => {
     return (<div>
         {<Collect
             value={sum}
-            totalValue={popUps[0].aim}
-            text={popUps[0].name}
+            totalValue={aim}
+            text={name}
         />}
     </div>);
 }
