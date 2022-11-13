@@ -15,11 +15,13 @@ const Blank = (): JSX.Element => {
     const [popUps, show] = useState<IDonate[]>([]);
 
     donateSource.addEventListener('donate', event => {
+        console.log('донат')
         let donate = JSON.parse(event.data)
         donateQueue.push(donate)
     });
   
     fundSource.addEventListener('fundUpdate', event => {
+        console.log('сбор')
         let fund = JSON.parse(event.data)
         fundQueue.push(fund)
     });
