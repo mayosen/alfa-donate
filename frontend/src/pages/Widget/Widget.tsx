@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from '../widget/widget.module.scss';
+import styles from './Widget.module.scss';
 
 type widgetProps = {
-    image?: string;
+    image: string;
     userName: string;
     valueMoney: number;
     text: string;
@@ -16,7 +16,11 @@ export function Widget({
 }: widgetProps): JSX.Element {
     return (
         <div className={styles.Main}>
-            <div className={styles.Image}>{image}</div>
+            <img
+                className={styles.Image}
+                src={image}
+                alt=""
+            />
             <div className={styles.UserName}>{userName} - {valueMoney}</div>
             <div className={styles.Text}>{text}</div>
         </div>
