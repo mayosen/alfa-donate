@@ -25,7 +25,8 @@ const Blank = (): JSX.Element => {
     });
 
     function showDonate() {
-        let donate = donateQueue.pop()
+        let donate = donateQueue[0];
+        donateQueue.shift();
         if (donate === undefined) {
             return;
         }
@@ -34,7 +35,8 @@ const Blank = (): JSX.Element => {
     }
   
     function updateFund() {
-        let fund = fundQueue.pop()
+        let fund = donateQueue[0];
+        fundQueue.shift();
         if (fund === undefined) {
             return;
         }
