@@ -35,7 +35,7 @@ const Blank = (): JSX.Element => {
         }
         console.log(donate)
         popUps.push(donate);
-        show(popUps);
+        show([...popUps]);
     }
   
     function updateFund() {
