@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import java.time.Duration;
 import java.util.UUID;
 
+@CrossOrigin(value = "http://localhost:5001", maxAge = 900)
 @RestController
 public class DonateController {
     private final DonateStreamingService donateStreamingService;
