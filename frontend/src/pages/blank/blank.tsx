@@ -38,7 +38,7 @@ const Blank = (): JSX.Element => {
         if (fund === undefined) {
             return;
         }
-        popUps.pop();
+        popUps.shift();
         show(popUps);
     }
 
