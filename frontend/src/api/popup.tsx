@@ -11,4 +11,5 @@ export interface IDonate {
 export interface IFund {
     collected: number;
     aim: number;
+    name: string;
 }
