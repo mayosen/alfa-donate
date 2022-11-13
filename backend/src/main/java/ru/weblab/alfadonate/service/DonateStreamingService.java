@@ -9,15 +9,21 @@ import ru.weblab.alfadonate.responseDto.DonateResponse;
 import java.util.*;
 
 @Service
-public class EventService {
+public class DonateStreamingService {
     private final Map<UUID, Queue<DonateResponse>> streamers;
     private final DonateService donateService;
     private final StreamerService streamerService;
+    private final FundStreamingService fundStreamingService;
 
-    public EventService(DonateService donateService, StreamerService userService) {
-        this.streamers = new HashMap<>();
+    public DonateStreamingService(
+            DonateService donateService,
+            StreamerService userService,
+            FundStreamingService fundStreamingService
+    ) {
+        this.fundStreamingService = fundStreamingService;
         this.streamerService = userService;
         this.donateService = donateService;
+        this.streamers = new HashMap<>();
     }
 
     public void addStreamer(UUID token) {
@@ -43,6 +49,7 @@ public class EventService {
                 if (queue != null) {
                     queue.add(DonateMapper.fromDonateToResponse(donate));
                 }
+                fundStreamingService.pushFundUpdate(request.getStreamerId(), streamer.getToken(), request.getAmount());
             });
         });
     }

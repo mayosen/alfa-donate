@@ -1,0 +1,247 @@
+.Wrapper {
+    padding-bottom: 90px;
+    .Topbar {
+        padding: 45px 205px 15px;
+        display: flex;
+        justify-content: space-between;
+        z-index: 3;
+        background-color: #000000;
+    
+        font-weight: 400;
+        font-size: 31px;
+        line-height: 34px;
+    
+        color: #FFFFFF;
+    
+        position: sticky;
+        top: 0;
+        left: 0;
+    
+        .Alpha {
+            position: relative;
+            top: -10px;
+        }
+    
+        .Menu {
+    
+            margin-top: 5px;
+    
+            .MenuBtn {
+                margin-right: 27px;
+            }
+    
+            .SignIn {
+                font-weight: 400;
+                font-size: 31px;
+                line-height: 38px;
+            
+                color: #FFFFFF;
+                background: rgba(239, 49, 36, 0.8);
+                border-radius: 8px;
+                padding: 5px 15px;
+    
+                &:hover {
+                    background: rgba(239, 49, 36, 1);
+                }
+            };
+    
+        }
+    }
+    
+    .Wrapper {
+        padding: 0 237px;
+    
+        .Banner {
+            height: 458px;
+            background-repeat: no-repeat;
+            background-position: 100% 120%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            .MainText {
+                font-weight: 400;
+                font-size: 54px;
+                line-height: 66px;
+                color: #FFFFFF;
+                margin-bottom: 138px;
+            }
+    
+            .Join {
+                width: fit-content;
+                display: inline-block;
+                font-weight: 400;
+                font-size: 31px;
+                line-height: 38px;
+            
+                color: #FFFFFF;
+                background: rgba(239, 49, 36, 0.8);
+                border-radius: 8px;
+                padding: 23px 12px;
+    
+                &:hover {
+                    background: rgba(239, 49, 36, 1);
+                }
+            };
+        
+        }
+    
+        .Benefits {
+    
+            margin-top: 73px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+    
+            .Benefit {
+    
+                font-weight: 400;
+                font-size: 31px;
+                line-height: 38px;
+                text-align: center;
+    
+                color: #FFFFFF;
+                .Description {
+                    max-width: 252px;
+                }
+            }
+        }
+    
+        .Features {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            .Advertise {
+    
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                cursor: pointer;
+    
+                .Title {
+                    font-weight: 400;
+                    font-size: 46px;
+                    line-height: 56px;
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    
+                    color: #FFFFFF;
+                    margin-bottom: 8px;
+                }
+        
+                .Scroll {
+                    height: 13px;
+                    width: 30px;
+                    margin-bottom: 70px;
+                }
+            }
+    
+    
+            .Buttons {
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+                margin-bottom: 45px;
+                .Btn {
+                    font-weight: 500;
+                    font-size: 20px;
+                    line-height: 24px;
+    
+                    color: #FFFFFF;
+    
+                    background: rgba(239, 49, 36, 0.8);
+                    border: 1px solid #000000;
+                    border-radius: 8px;
+                    width: 264px;
+                    height: 51px;
+    
+                    &:hover {
+                        background: rgba(239, 49, 36, 1);
+                    }
+                }
+            }
+    
+            .MsgFromUsers {
+                font-weight: 600;
+                font-size: 56px;
+                line-height: 68px;
+    
+                color: #FFFFFF;
+                margin-bottom: 45px;
+            }
+    
+            .Stream {
+                border-radius: 40px;
+                background-image: url('../../images/stream.png');
+                background-size: cover;
+                width: 1401px;
+                height: 655px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                padding: 126px 51px 25px;
+    
+                .Donater {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .Avatar {
+                        width: 163px;
+                        height: 158px;
+                        margin-bottom: 15px;
+                    }
+        
+                    .Sender {
+                        font-weight: 700;
+                        font-size: 43px;
+                        line-height: 49px;
+                        color: #FFFFFF;
+                        text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+                        margin-bottom: 15px;
+                    }
+        
+                    .Message {
+                        font-weight: 400;
+                        font-size: 32px;
+                        line-height: 37px;
+                        color: #FFFFFF;
+                    }
+                }
+    
+                .Progress {
+                    width: 100%;
+                    font-weight: 700;
+                    font-size: 27px;
+                    line-height: 33px;
+                    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+                    color: #FFFFFF;
+    
+                    .Bar {
+                        width: fit-content;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        .Percentages {
+                            border: 1px solid #000000;
+                            border-radius: 10px;
+                            width: 336px;
+                            height: 51px;
+                            font-weight: 700;
+                            font-size: 27px;
+                            line-height: 33px;
+        
+                            /* identical to box height */
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+    
+                    /* identical to box height */
+                }
+            }
+        }
+    }
+}

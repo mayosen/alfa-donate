@@ -6,6 +6,8 @@ import reactor.core.publisher.Mono;
 import ru.weblab.alfadonate.domain.Streamer;
 import ru.weblab.alfadonate.repository.StreamerRepo;
 
+import java.util.UUID;
+
 @Service
 public class StreamerService {
     private final StreamerRepo streamerRepo;
@@ -17,5 +19,9 @@ public class StreamerService {
 
     public Mono<Streamer> findById(long id) {
         return streamerRepo.findById(id);
+    }
+
+    public Mono<Streamer> findByToken(UUID token) {
+        return streamerRepo.findByToken(token);
     }
 }

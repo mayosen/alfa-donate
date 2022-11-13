@@ -13,7 +13,7 @@ import java.time.Instant;
 @NoArgsConstructor
 public class DonateResponse {
     private Long id;
-    private String nickName;
+    private String nickname;
     private String message;
     private String tag;
     private Instant date;
