@@ -44,7 +44,6 @@ public class EventService {
                     queue.add(DonateMapper.fromDonateToResponse(donate));
                 }
             });
-
         });
     }
 }
