@@ -1,6 +1,8 @@
 import { AxiosResponse } from 'axios';
 import {AxiosInstance} from './axiosinstance';
 
+const id = 1;
+
 export interface IDonater {
     nickname: string;
     sum: number;
@@ -18,7 +20,7 @@ export class AnalyticsAPIs {
         );
     }
 
-    async getTimeStatistics(id: number, param: string): Promise<AxiosResponse<ITimeDonate[]>> {
+    async getTimeStatistics(param: string): Promise<AxiosResponse<ITimeDonate[]>> {
         return await AxiosInstance.get<ITimeDonate[]>(
             `/analytics/by-date/${id}?groupBy=${param}`
         );

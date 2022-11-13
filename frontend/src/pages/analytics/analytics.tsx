@@ -16,9 +16,6 @@ const Analytics = (): JSX.Element => {
 
     const [donaters, setDonaters] = useState<IDonater[]>();
     const [timestat, setTimeStat] = useState<ITimeDonate[]>();
-    const [byweek, setByWeek] = useState(false);
-    const [byday, setByDay] = useState(false);
-    const [bymonth, setByMonth] = useState(true);
     const [bytime, setBy] = useState('month');
 
     useEffect(() => {
@@ -30,20 +27,19 @@ const Analytics = (): JSX.Element => {
         };
 
         request();
+
+        const requestDate = async () => {
+            const res = await analyticsAPIs.getTimeStatistics(bytime);
+            if (res.status === 200) {
+                setTimeStat(res.data);
+            }
+        };
+
+        requestDate();
     }, []);
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        if (event.target.value === "week") {
-            setByWeek(true);
-            setByWeek(false);
-        }
-        if (event.target.value === "day") {
-            setByDay(true);
-        }
-        if (event.target.value === "month") {
-            setByMonth(true);
-        }
-        console.log(event.target.value);
+        setBy(event.target.value);
     };
 
 
@@ -59,24 +55,15 @@ const Analytics = (): JSX.Element => {
                     <div className={styles.SelectorBox}>
                         Временной отрезок:
                         <select className={styles.Selector} name="" id="" onChange={(event) => {handleChange(event)}}>
-                            <option className={styles.Option} value="day">За день</option>
-                            <option className={styles.Option} value="week">За неделю</option>
+                            <option className={styles.Option} value="day">За неделю</option>
                             <option className={styles.Option} value="month">За месяц</option>
                         </select>
                     </div>
                 </div>
                 <div className={styles.List}>
-                    <Period period="Март" amount={2000}></Period>
-                    <Period period="Март" amount={2000}></Period>
-                    <Period period="Март" amount={2000}></Period>
-                    <Period period="Март" amount={2000}></Period>
-                    <Period period="Март" amount={2000}></Period>
-                    <Period period="Март" amount={2000}></Period>
-                    <Period period="Март" amount={2000}></Period>
-                    <Period period="Март" amount={2000}></Period>
-                    <Period period="Март" amount={2000}></Period>
-                    <Period period="Апрель" amount={2000}></Period>
-                    <Period period="Апрель" amount={2000}></Period>
+                    {timestat && timestat.map((item) => {
+                        return (<Period {...item} period={bytime}></Period>)
+                    })}
                 </div>
             </div>
             <div className={styles.Top}>
