@@ -21,7 +21,11 @@ export function Place(props: PlaceProps): JSX.Element {
     return (
         <div className={styles.Wrapper}>
             <div className={styles.Donater}>{props.nickname}</div>
-            <img src={places[props.place]} className={styles.Place}/>
+            {props.place > 3 ? 
+                <div className={styles.LowPlace}>#{props.place}</div>
+                :
+                <img src={places[props.place]} className={styles.Place}/>
+            }
         </div>
     );
 }

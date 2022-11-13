@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 40px;
+    min-height: 64px;
 
     .Donater {
         font-weight: 400;
@@ -15,5 +16,10 @@
         line-height: 29px;
 
         color: #000000;
+    }
+
+    .LowPlace {
+        position: relative;
+        left: -20px;
     }
 }

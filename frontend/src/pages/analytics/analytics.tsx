@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import styles from './analytics.module.scss';
 import logo from '../../images/logo.svg';
@@ -8,8 +8,31 @@ import { Chatdonate } from '../../components/chatdonate/chatdonate';
 import { Place } from '../../components/place/place';
 import { Period }from '../../components/period/period';
 
+import { analyticsAPIs } from '../../api/analytics.api';
+import { IDonater, ITimeDonate } from '../../api/analytics.api';
+
 
 const Analytics = (): JSX.Element => {
+
+    const [donaters, setDonaters] = useState<IDonater[]>();
+    const [timestat, setTimeStat] = useState<ITimeDonate[]>();
+
+    useEffect(() => {
+        const request = async () => {
+            const res = await analyticsAPIs.getTopDonaters();
+            if (res.status === 200) {
+                setDonaters(res.data);
+            }
+        };
+
+        request();
+    }, []);
+
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        console.log(event.target.value);
+    };
+
+
     return <div className={styles.Wrapper}>
         <div className={styles.MainInfo}>
             <div className={styles.Balance}>
@@ -21,10 +44,10 @@ const Analytics = (): JSX.Element => {
                     <h2 className={styles.Title}>Донаты</h2>
                     <div className={styles.SelectorBox}>
                         Временной отрезок:
-                        <select className={styles.Selector} name="" id="">
+                        <select className={styles.Selector} name="" id="" onChange={(event) => {handleChange(event)}}>
+                            <option className={styles.Option} value="day">За день</option>
                             <option className={styles.Option} value="week">За неделю</option>
                             <option className={styles.Option} value="month">За месяц</option>
-                            <option className={styles.Option} value="year">За год</option>
                         </select>
                     </div>
                 </div>
@@ -45,9 +68,9 @@ const Analytics = (): JSX.Element => {
             <div className={styles.Top}>
                 <h2 className={styles.Title}>Топ донатеров</h2>
                 <div className={styles.Rating}>
-                    <Place nickname='first' place={1}></Place>
-                    <Place nickname='second' place={2}></Place>
-                    <Place nickname='third' place={3}></Place>
+                    {donaters && donaters.map((el, ind) => {
+                        return <Place nickname={el.nickname} place={ind}></Place>
+                    })}
                 </div>
             </div>
             <div className={styles.Soon}>
