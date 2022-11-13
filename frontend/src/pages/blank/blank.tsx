@@ -13,18 +13,15 @@ const Blank = (): JSX.Element => {
 
     let donateQueue: IDonate[] = [];
     let fundQueue: IFund[] = [];
-    let destroyTimer: NodeJS.Timer;
 
     const [popUps, show] = useState<IDonate[]>([]);
 
     donateSource.addEventListener('donate', event => {
-        console.log('донат')
         let donate = JSON.parse(event.data)
         donateQueue.push(donate)
     });
   
     fundSource.addEventListener('fundUpdate', event => {
-        console.log('сбор')
         let fund = JSON.parse(event.data)
         fundQueue.push(fund)
     });
@@ -35,7 +32,6 @@ const Blank = (): JSX.Element => {
         if (donate === undefined) {
             return;
         }
-        console.log(donate)
         donate.destroyTime = setInterval(destroy, 5000);
         popUps.push(donate);
         show([...popUps]);
@@ -52,7 +48,6 @@ const Blank = (): JSX.Element => {
         if (fund === undefined) {
             return;
         }
-        console.log(fund)
         popUps.shift();
         show(popUps);
     }
@@ -62,7 +57,6 @@ const Blank = (): JSX.Element => {
   
     return (<div>
         {popUps.map((props, ind) => {
-            console.log(ind)
             return <Widget {...props} image={img} key={ind}></Widget>
         })}
     </div>);
