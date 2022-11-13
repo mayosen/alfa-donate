@@ -55,8 +55,8 @@ const Analytics = (): JSX.Element => {
                     <div className={styles.SelectorBox}>
                         Временной отрезок:
                         <select className={styles.Selector} name="" id="" onChange={(event) => {handleChange(event)}}>
-                            <option className={styles.Option} value="day">За неделю</option>
                             <option className={styles.Option} value="month">За месяц</option>
+                            <option className={styles.Option} value="day">За неделю</option>
                         </select>
                     </div>
                 </div>
