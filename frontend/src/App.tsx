@@ -3,12 +3,12 @@ import './App.css';
 import Landing from './pages/landing/landing';
 
 import { IDonate, IFund } from './api/popup';
-import Blank from './pages/blank/blank';
+import BlankFund from './pages/blank fund/blankFund';
 
 
 function App() {
   return (
-    <Blank></Blank>
+    <BlankFund></BlankFund>
   );
 }
 

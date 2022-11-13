@@ -1,0 +1,65 @@
+.Main {
+    margin-top: 250px;
+    margin-left: 250px;
+    width: 336px;
+    height: 84px;
+}
+
+.Card {
+    width: 334px;
+    height: 50px;
+    left: 310px;
+    top: 1804px;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.Text {
+    position: absolute;
+    width: 134px;
+    height: 33px;
+    margin-left: 100px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 33px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.Progress {
+    height: 51px;
+    margin-left: -1px;
+
+    background: #C8281D;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.Procent {
+    width: 79px;
+    height: 33px;
+
+    margin-left: 265px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 33px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
