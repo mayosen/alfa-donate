@@ -21,14 +21,6 @@
 
             padding: 20px 40px;
 
-            .Title {
-                font-weight: 400;
-                font-size: 32px;
-                line-height: 39px;
-                
-                color: #FFFFFF;
-            }
-
             .Money {
                 font-weight: 400;
                 font-size: 64px;
@@ -39,6 +31,14 @@
             }
         }
 
+        .Title {
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 39px;
+            
+            color: #FFFFFF;
+        }
+
         .Donates {
             background: #FFFFFF;
             border-radius: 20px;
@@ -46,6 +46,39 @@
             grid-column-end: 3;
             grid-row-start: 1;
             grid-row-end: 3;
+            padding: 20px 40px;
+            overflow: scroll;
+
+            .Header {
+                margin-bottom: 26px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .Title {
+                    color: #000000;
+                }
+
+                .SelectorBox {
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: #000000;
+                    text-transform: uppercase;
+
+                    .Option {
+                        text-transform: lowercase;
+                    }
+
+                    .Selector {
+                        text-transform: lowercase;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .List {
+            }
+
         }
 
         .Top {
@@ -55,27 +88,46 @@
             grid-column-end: 2;
             grid-row-start: 2;
             grid-row-end: 4;
+            padding: 20px 40px;
+
+            .Rating {
+                margin-top: 16px;
+            }
         }
 
         .Soon {
             background: #292323;
             border-radius: 20px;
+            font-weight: 400;
+            font-size: 32px;
+            display: flex;
+            justify-content: center;
+            line-height: 39px;
+            display: flex;
+            align-items: center;
+
+            color: #FFFFFF;
         }
     }
 
     .Chat {
         height: 100%;
-        overflow: hidden;
+        overflow: scroll;
         box-sizing: border-box;
         width: 27%;
         background: #292323;
         box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-        padding: 15px 30px;
+        padding: 0px 30px 15px;
 
         .Header {
 
             display: flex;
             margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            right: 0;
+            background-color: #292323;;
+            padding-bottom: 5px;
 
             .Logo {
                 height: 115px;
