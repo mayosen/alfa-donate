@@ -28,10 +28,6 @@ const Analytics = (): JSX.Element => {
 
         request();
 
-        getStat();
-    }, []);
-
-    const getStat = () => {
         const requestDate = async () => {
             const res = await analyticsAPIs.getTimeStatistics(bytime);
             if (res.status === 200) {
@@ -40,11 +36,10 @@ const Analytics = (): JSX.Element => {
         };
 
         requestDate();
-    }
+    }, []);
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setBy(event.target.value);
-        getStat();
     };
 
 
