@@ -62,7 +62,7 @@ const Analytics = (): JSX.Element => {
                 </div>
                 <div className={styles.List}>
                     {timestat && timestat.map((item) => {
-                        return (<Period {...item} period={bytime}></Period>)
+                        return (<Period {...item} period={bytime} key={item.amount}></Period>)
                     })}
                 </div>
             </div>
