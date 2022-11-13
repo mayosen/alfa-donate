@@ -84,13 +84,6 @@ const Analytics = (): JSX.Element => {
                 <div className={styles.LogoText}>ALFA Donate</div>
             </div>
             <div className={styles.Messages}>
-                <Chatdonate nickname={"Anton"} amount={200} commentary={"Спасибо"}></Chatdonate>
-                <Chatdonate nickname={"Anton"} amount={200} commentary={"Спасибо за детство"}></Chatdonate>
-                <Chatdonate nickname={"Anton"} amount={200} commentary={"kk"}></Chatdonate>
-                <Chatdonate nickname={"Anton"} amount={200} commentary={"Спасибо"}></Chatdonate>
-                <Chatdonate nickname={"Anton"} amount={200} commentary={"Спасибо"}></Chatdonate>
-                <Chatdonate nickname={"Anton"} amount={200} commentary={"Спасибо"}></Chatdonate>
-                <Chatdonate nickname={"Not Anton"} amount={200} commentary={"Спасибо"}></Chatdonate>
             </div>
         </div>
     </div>
