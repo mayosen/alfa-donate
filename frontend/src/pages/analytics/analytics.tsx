@@ -83,7 +83,7 @@ const Analytics = (): JSX.Element => {
                 <h2 className={styles.Title}>Топ донатеров</h2>
                 <div className={styles.Rating}>
                     {donaters && donaters.map((el, ind) => {
-                        return <Place nickname={el.nickname} place={ind}></Place>
+                        return <Place nickname={el.nickname} place={ind+1}></Place>
                     })}
                 </div>
             </div>
