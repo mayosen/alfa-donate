@@ -28,7 +28,7 @@ public class FundStreamingService {
         } else {
             return ServerSentEvent.<FundResponse>builder()
                     .id(String.valueOf(fund.getId()))
-                    .event("fund-update")
+                    .event("fundUpdate")
                     .data(fund)
                     .build();
         }
