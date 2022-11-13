@@ -35,7 +35,7 @@ const Blank = (): JSX.Element => {
     }
   
     function updateFund() {
-        let fund = donateQueue[0];
+        let fund = fundQueue[0];
         fundQueue.shift();
         if (fund === undefined) {
             return;
