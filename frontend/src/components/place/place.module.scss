@@ -1,0 +1,25 @@
+.Wrapper {
+    background: #FFFFFF;
+    border-radius: 20px;
+    width: 100%;
+    display: flex;
+    padding: 2px 40px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    min-height: 64px;
+
+    .Donater {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+
+        color: #000000;
+    }
+
+    .LowPlace {
+        position: relative;
+        left: -20px;
+    }
+}
