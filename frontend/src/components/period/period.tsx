@@ -7,7 +7,7 @@ import second from '../../images/second.svg';
 import third from '../../images/third.svg';
 
 type PeriodProps = {
-    dateTime: number,
+    dateTime: number[],
     amount: number;
     period: string;
 }
@@ -22,11 +22,11 @@ const daysNames = [
 
 export function Period(props: PeriodProps): JSX.Element {
     let dateString: string;
-    const date = new Date(props.dateTime);
-    if (props.period == 'month') {
-        dateString = monthNames[date.getMonth()];
+    const date = new Date(props.dateTime[0], props.dateTime[1], props.dateTime[2]);
+    if (props.period == 'week') {
+        dateString = daysNames[props.dateTime[1]];
     } else {
-        dateString = daysNames[date.getMonth()];
+        dateString = monthNames[date.getMonth()];
     }
     return (
         <div className={styles.Wrapper}>

@@ -10,7 +10,7 @@ export interface IDonater {
 
 export interface ITimeDonate {
     amount: number;
-    dateTime: number;
+    dateTime: number[];
 }
 
 export class AnalyticsAPIs {
