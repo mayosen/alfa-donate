@@ -1,15 +1,16 @@
 import React from 'react';
 import './App.css';
 import Landing from './pages/landing/landing';
-import { Router, Route, Routes } from 'react-router';
+import {BrowserRouter} from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing/>}/>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 

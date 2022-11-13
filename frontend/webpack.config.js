@@ -62,6 +62,7 @@ const config =  {
     plugins: [
         new HtmlWebpackPlugin({
         template: 'public/index.html',
+        favicon: './public/favicon.ico'
       }),
       new CopyPlugin({patterns: [
         { from: 'src/images', to: 'images' }
