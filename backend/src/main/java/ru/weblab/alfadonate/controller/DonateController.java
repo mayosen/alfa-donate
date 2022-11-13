@@ -4,16 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import ru.weblab.alfadonate.domain.Streamer;
+import ru.weblab.alfadonate.mapper.StreamerMapper;
 import ru.weblab.alfadonate.requestDto.DonateCreateRequest;
 import ru.weblab.alfadonate.requestDto.FundCreateRequest;
-import ru.weblab.alfadonate.responseDto.AnalyticsResponse;
-import ru.weblab.alfadonate.responseDto.DonateResponse;
-import ru.weblab.alfadonate.responseDto.FundResponse;
-import ru.weblab.alfadonate.responseDto.TopDonaters;
-import ru.weblab.alfadonate.service.DonateService;
-import ru.weblab.alfadonate.service.DonateStreamingService;
-import ru.weblab.alfadonate.service.FundService;
-import ru.weblab.alfadonate.service.FundStreamingService;
+import ru.weblab.alfadonate.responseDto.*;
+import ru.weblab.alfadonate.service.*;
 
 import javax.validation.Valid;
 import java.time.Duration;
@@ -25,18 +22,20 @@ public class DonateController {
     private final FundStreamingService fundStreamingService;
     private final FundService fundService;
     private final DonateService donateService;
+    private final StreamerService streamerService;
 
     @Autowired
     public DonateController(
             DonateStreamingService donateStreamingService,
             FundStreamingService fundStreamingService,
             FundService fundService,
-            DonateService donateService
-    ) {
+            DonateService donateService,
+            StreamerService streamerService) {
         this.donateStreamingService = donateStreamingService;
         this.fundStreamingService = fundStreamingService;
         this.fundService = fundService;
         this.donateService = donateService;
+        this.streamerService = streamerService;
     }
 
     @PostMapping("/donate")
@@ -76,5 +75,10 @@ public class DonateController {
     @GetMapping("/analytics/by-date/{streamerId}")
     public Flux<AnalyticsResponse> getAnalytics(@PathVariable Long streamerId, @RequestParam String groupBy) {
         return donateService.getAnalytics(groupBy, streamerId);
+    }
+
+    @GetMapping("streamer/{streamerId}")
+    public Mono<Streamer> getById(@PathVariable Long streamerId) {
+        return streamerService.findById(streamerId);
     }
 }

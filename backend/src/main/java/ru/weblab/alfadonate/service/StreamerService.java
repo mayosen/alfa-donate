@@ -11,10 +11,12 @@ import java.util.UUID;
 @Service
 public class StreamerService {
     private final StreamerRepo streamerRepo;
+    private final DonateService donateService;
 
     @Autowired
-    public StreamerService(StreamerRepo streamerRepo) {
+    public StreamerService(StreamerRepo streamerRepo, DonateService donateService) {
         this.streamerRepo = streamerRepo;
+        this.donateService = donateService;
     }
 
     public Mono<Streamer> findById(long id) {

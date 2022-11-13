@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Getter
@@ -15,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class AnalyticsResponse {
     @Column("datetime")
-    private LocalDateTime dateTime;
+    private Instant dateTime;
     @Column("sum")
     private Integer amount;
 }
