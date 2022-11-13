@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from './Widget.module.scss';
 
-type widgetProps = {
+export type widgetProps = {
     image: string;
-    userName: string;
-    valueMoney: number;
-    text: string;
+    nickname: string;
+    amount: number;
+    message: string;
 };
 
 export function Widget({
     image,
-    userName,
-    valueMoney,
-    text,
+    nickname: userName,
+    amount: valueMoney,
+    message,
 }: widgetProps): JSX.Element {
     return (
         <div className={styles.Main}>
@@ -22,7 +22,7 @@ export function Widget({
                 alt=""
             />
             <div className={styles.UserName}>{userName} - {valueMoney}</div>
-            <div className={styles.Text}>{text}</div>
+            <div className={styles.Text}>{message}</div>
         </div>
     );
 }
