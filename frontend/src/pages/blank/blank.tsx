@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Widget, widgetProps } from '../Widget/Widget';
 import { IDonate, IFund } from '../../api/popup';
 import img from '../../images/popcat.png';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 const Blank = (): JSX.Element => {
 
@@ -12,6 +13,7 @@ const Blank = (): JSX.Element => {
 
     let donateQueue: IDonate[] = [];
     let fundQueue: IFund[] = [];
+    let destroyTimer: NodeJS.Timer;
 
     const [popUps, show] = useState<IDonate[]>([]);
 
@@ -36,8 +38,15 @@ const Blank = (): JSX.Element => {
         console.log(donate)
         popUps.push(donate);
         show([...popUps]);
+        destroyTimer = setInterval(destroy, 5000);
     }
   
+    function destroy() {
+        popUps.shift();
+        show([...popUps]);
+        clearInterval(destroyTimer);
+    }
+
     function updateFund() {
         let fund = fundQueue[0];
         fundQueue.shift();
@@ -55,7 +64,7 @@ const Blank = (): JSX.Element => {
     return (<div>
         {popUps.map((props, ind) => {
             console.log(ind)
-            return <Widget {...props} image={img}></Widget>
+            return <Widget {...props} image={img} key={ind}></Widget>
         })}
     </div>);
 }
