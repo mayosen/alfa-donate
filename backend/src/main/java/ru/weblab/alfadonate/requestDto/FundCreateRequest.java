@@ -7,22 +7,22 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.Instant;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class DonateCreateRequest {
+@AllArgsConstructor
+public class FundCreateRequest {
     @NotNull
     private Long streamerId;
 
     @NotBlank
-    private String nickname;
-
-    private String message;
-
-    private String tag;
+    private String name;
 
     @NotNull
-    private Integer amount;
+    private Integer aim;
+
+    @NotNull
+    private Instant endDate;
 }

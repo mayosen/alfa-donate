@@ -5,17 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.Instant;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DonateResponse {
-    private Long id;
+public class TopDonaters {
     private String nickname;
-    private String message;
-    private String tag;
-    private Instant date;
-    private Integer amount;
+    private String sum;
 }
