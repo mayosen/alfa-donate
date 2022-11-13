@@ -23,7 +23,7 @@ const daysNames = [
 export function Period(props: PeriodProps): JSX.Element {
     let dateString: string;
     const date = new Date(props.dateTime[0], props.dateTime[1], props.dateTime[2]);
-    if (props.period == 'week') {
+    if (props.period == 'day') {
         dateString = daysNames[props.dateTime[1]];
     } else {
         dateString = monthNames[date.getMonth()];
