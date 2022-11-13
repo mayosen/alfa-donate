@@ -32,6 +32,7 @@ const Blank = (): JSX.Element => {
         if (donate === undefined) {
             return;
         }
+        console.log(donate)
         popUps.push(donate);
         show(popUps);
     }
@@ -42,6 +43,7 @@ const Blank = (): JSX.Element => {
         if (fund === undefined) {
             return;
         }
+        console.log(fund)
         popUps.shift();
         show(popUps);
     }
