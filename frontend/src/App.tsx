@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Landing/>}/>
         <Route path="/analytics" element={<Analytics/>}/>
         <Route path="/donates" element={<Blank/>}/>
-        <Route path="/donates" element={<BlankFund/>}/>
+        <Route path="/funds" element={<BlankFund/>}/>
       </Routes>
     </BrowserRouter>
   );
