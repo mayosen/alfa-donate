@@ -5,6 +5,7 @@ import {BrowserRouter} from 'react-router-dom';
 import { Route, Routes } from 'react-router';
 import Blank from './pages/blank/blank';
 import Analytics from './pages/analytics/analytics';
+import BlankFund from './pages/blank fund/blankFund';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Landing/>}/>
         <Route path="/analytics" element={<Analytics/>}/>
         <Route path="/donates" element={<Blank/>}/>
+        <Route path="/donates" element={<BlankFund/>}/>
       </Routes>
     </BrowserRouter>
   );
