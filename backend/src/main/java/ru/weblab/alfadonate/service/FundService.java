@@ -26,19 +26,14 @@ public class FundService {
     }
 
     public void create(FundCreateRequest request) {
-        fundRepo.findByStreamerId(request.getStreamerId()).subscribe(fund -> {
-            if (fund == null) {
-                fund = new Fund();
-                fund.setStreamerId(request.getStreamerId());
-            }
-
-            fund.setName(request.getName());
-            fund.setAim(request.getAim());
-            fund.setCollected(0);
-            fund.setStartDate(Instant.now());
-            fund.setEndDate(request.getEndDate());
-            fundRepo.save(fund);
-        });
+        Fund fund = new Fund();
+        fund.setStreamerId(request.getStreamerId());
+        fund.setName(request.getName());
+        fund.setAim(request.getAim());
+        fund.setCollected(0);
+        fund.setStartDate(Instant.now());
+        fund.setEndDate(request.getEndDate());
+        fundRepo.save(fund).subscribe();
     }
 
     public Mono<Fund> update(Fund fund) {
@@ -47,7 +42,7 @@ public class FundService {
 
     public void drop(UUID token) {
         streamerService.findByToken(token).subscribe(s -> {
-            fundRepo.deleteByStreamerId(s.getId());
+            fundRepo.deleteByStreamerId(s.getId()).subscribe();
         });
     }
 }
