@@ -53,7 +53,8 @@ const Blank = (): JSX.Element => {
     let fundTimer = setInterval(updateFund, 1000)
   
     return (<div>
-        {popUps.map((props) => {
+        {popUps.map((props, ind) => {
+            console.log(ind)
             return <Widget {...props} image={img}></Widget>
         })}
     </div>);
