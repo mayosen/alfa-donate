@@ -1,0 +1,20 @@
+.Wrapper {
+    background: #FFFFFF;
+    border-radius: 20px;
+    width: 100%;
+    padding: 20px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    color: #000000;
+    margin-bottom: 50px;
+
+    .Donater {
+        margin-bottom: 8px;
+    }
+}
