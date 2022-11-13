@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Widget, widgetProps } from '../Widget/Widget';
 import { IDonate, IFund } from '../../api/popup';
+import img from '../../images/popcat.png';
 
 const Blank = (): JSX.Element => {
 
@@ -49,7 +50,7 @@ const Blank = (): JSX.Element => {
   
     return (<div>
         {popUps.map((props) => {
-            return <Widget {...props}></Widget>
+            return <Widget {...props} image={img}></Widget>
         })}
     </div>);
 }

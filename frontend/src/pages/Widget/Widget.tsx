@@ -12,7 +12,7 @@ export function Widget({
     image,
     nickname: userName,
     amount: valueMoney,
-    message: text,
+    message,
 }: widgetProps): JSX.Element {
     return (
         <div className={styles.Main}>
@@ -22,7 +22,7 @@ export function Widget({
                 alt=""
             />
             <div className={styles.UserName}>{userName} - {valueMoney}</div>
-            <div className={styles.Text}>{text}</div>
+            <div className={styles.Text}>{message}</div>
         </div>
     );
 }
