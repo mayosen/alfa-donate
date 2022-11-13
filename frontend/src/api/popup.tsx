@@ -5,6 +5,7 @@ export interface IDonate {
     id: number;
     date: number;
     tag: string;
+    destroyTime: NodeJS.Timer;
 }
 
 export interface IFund {

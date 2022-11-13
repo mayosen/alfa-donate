@@ -36,15 +36,14 @@ const Blank = (): JSX.Element => {
             return;
         }
         console.log(donate)
+        donate.destroyTime = setInterval(destroy, 5000);
         popUps.push(donate);
         show([...popUps]);
-        destroyTimer = setInterval(destroy, 5000);
     }
   
     function destroy() {
-        popUps.shift();
+        clearInterval(popUps.shift()?.destroyTime);
         show([...popUps]);
-        clearInterval(destroyTimer);
     }
 
     function updateFund() {
