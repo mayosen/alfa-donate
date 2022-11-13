@@ -19,6 +19,7 @@ const Analytics = (): JSX.Element => {
     const [byweek, setByWeek] = useState(false);
     const [byday, setByDay] = useState(false);
     const [bymonth, setByMonth] = useState(true);
+    const [bytime, setBy] = useState('month');
 
     useEffect(() => {
         const request = async () => {
